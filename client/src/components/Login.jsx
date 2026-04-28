@@ -1,15 +1,18 @@
 import React from "react";
 
 const Login = ({ switchToRegister, switchToForgotPassword }) => {
+  const handleLogin=()=>{
+    sessionStorage.setItem("isLogin", true)
+  }
   return (
     <div className="w-full max-w-md p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl">
-      
+
       <h2 className="text-3xl font-bold text-white mb-7 text-center">
         Welcome Back
       </h2>
 
       <div className="flex flex-col gap-4">
-        
+
         <input
           type="text"
           placeholder="Username"
@@ -28,7 +31,9 @@ const Login = ({ switchToRegister, switchToForgotPassword }) => {
           Forgot Password?
         </span>
 
-        <button className="mt-4 bg-amber-400 text-black font-semibold py-3 rounded-lg hover:bg-amber-300 transition duration-300">
+        <button className="mt-4 bg-amber-400 text-black font-semibold py-3 rounded-lg hover:bg-amber-300 transition duration-300"
+          onClick={() => handleLogin()}
+        >
           Login
         </button>
 
