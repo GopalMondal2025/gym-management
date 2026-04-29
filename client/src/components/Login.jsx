@@ -1,8 +1,10 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const Login = ({ switchToRegister, switchToForgotPassword }) => {
+  const navigate=useNavigate();
   const handleLogin=()=>{
-    sessionStorage.setItem("isLogin", true)
+    sessionStorage.setItem("isLogin", true);
+    navigate('/dashboard')
   }
   return (
     <div className="w-full max-w-md p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl">
