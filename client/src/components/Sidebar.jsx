@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Sidebar = () => {
@@ -15,6 +15,11 @@ const Sidebar = () => {
   const toggleSection = (title) => {
     setOpenSection((prev) => (prev === title ? null : title));
   };
+  const navigate = useNavigate();
+  const handleLogout = async () => {
+    sessionStorage.clear();
+    navigate('/');
+  }
 
   const navSections = [
     {
@@ -24,8 +29,8 @@ const Sidebar = () => {
     {
       title: "Members",
       items: [
-        { name: "All Members", path: "/dashboard/members" },
-        { name: "Add Member", path: "/dashboard/members/add" },
+        { name: "All Members", path: "/members" },
+        { name: "Add Member", path: "/members/add" },
         { name: "Active Members", path: "/dashboard/members/active" },
         { name: "Inactive Members", path: "/dashboard/members/inactive" },
         { name: "Packages / Plans", path: "/dashboard/members/packages" },
@@ -75,7 +80,7 @@ const Sidebar = () => {
 
   return (
     <div className="w-64 min-h-screen border-r bg-white flex flex-col">
-      
+
       {/* Greeting */}
       <div className="p-6 border-b border-gray-50">
         <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">
@@ -105,22 +110,33 @@ const Sidebar = () => {
             {/* Items (Collapsible) */}
             {openSection === section.title && (
               <div className="mt-2 space-y-1">
-                {section.items.map((item) => (
-                  <NavLink
-                    key={item.path}
-                    to={item.path}
-                    end={item.path === "/dashboard"}
-                    className={({ isActive }) =>
-                      `block px-4 py-2 rounded-lg text-sm transition ${
-                        isActive
+                {section.items.map((item) => {
+                  const isLogout = item.name === "Logout";
+
+                  return isLogout ? (
+                    <button
+                      key={item.path}
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 rounded-lg text-sm text-red-500 hover:bg-red-50 transition"
+                    >
+                      {item.name}
+                    </button>
+                  ) : (
+                    <NavLink
+                      key={item.path}
+                      to={item.path}
+                      end={item.path === "/dashboard"}
+                      className={({ isActive }) =>
+                        `block px-4 py-2 rounded-lg text-sm transition ${isActive
                           ? "bg-slate-900 text-white"
                           : "text-gray-600 hover:bg-gray-100"
-                      }`
-                    }
-                  >
-                    {item.name}
-                  </NavLink>
-                ))}
+                        }`
+                      }
+                    >
+                      {item.name}
+                    </NavLink>
+                  );
+                })}
               </div>
             )}
           </div>

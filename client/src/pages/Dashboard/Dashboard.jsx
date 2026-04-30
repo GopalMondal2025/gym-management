@@ -39,7 +39,7 @@ const Dashboard = () => {
                     value="1,250"
                     emoji="👥"
                     colorClass="bg-blue-50"
-                    to="/dashboard/members"
+                    to="/members"
                 />
                 <StatCard
                     title="Monthly Joined"

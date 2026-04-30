@@ -1,0 +1,33 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend system of this application",
+  "keywords": [
+    "backend",
+    "mongoose",
+    "management",
+    "application"
+  ],
+  "homepage": "https://github.com/priyangshu-halder/gym-management#readme",
+  "bugs": {
+    "url": "https://github.com/priyangshu-halder/gym-management/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyangshu-halder/gym-management.git"
+  },
+  "license": "MIT",
+  "author": "Priyangshu Halder",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  }
+}

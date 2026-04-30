@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import AddMembership from "../../components/AddMembership";
+import AddMembership from "./AddMembership";
 const Members = () => {
     const [addMember, setAddMember] = useState(false);
     const addMembbership = () => {
@@ -81,7 +81,7 @@ const Members = () => {
                                     <span className="px-2 py-1 text-xs font-bold bg-green-100 text-green-700 rounded-full">Active</span>
                                 </td>
                                 <td className="px-6 py-4 text-gray-600">10-12-2025</td>
-                                <td className="px-6 py-4 text-blue-600 cursor-pointer hover:underline text-sm font-bold">View Profile</td>
+                                <td className="px-6 py-4 text-blue-600 cursor-pointer hover:underline text-sm font-bold" ><Link to="/members/:id">View Profile</Link></td>
                             </tr>
                         </tbody>
                     </table>
