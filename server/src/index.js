@@ -10,7 +10,7 @@ const port = process.env.PORT || 8001
 connectDB()
   .then(
     app.listen(port, () => {
-      console.log(`App is running at ${port}`)
+      console.log(`Server is running at ${port}`)
     })
   )
   .catch(error => {
