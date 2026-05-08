@@ -10,18 +10,18 @@ import Sidebar from './components/Sidebar'
 import { useState, useEffect } from 'react'
 
 function App() {
-  const navigate = useNavigate();
-  const location = useLocation(); 
-  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate()
+  const location = useLocation()
+  const [isLogin, setIsLogin] = useState(false)
 
   useEffect(() => {
-    const loggedInStatus = sessionStorage.getItem("isLogin") === "true";
-    setIsLogin(loggedInStatus);
+    const loggedInStatus = sessionStorage.getItem('isLogin') === 'true'
+    setIsLogin(loggedInStatus)
 
     if (loggedInStatus && location.pathname === '/') {
-      navigate('/dashboard');
+      navigate('/dashboard')
     }
-  }, [navigate, location.pathname]);
+  }, [navigate, location.pathname])
 
   return (
     <div className="flex min-h-screen w-full">
@@ -33,14 +33,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/members" element={<Member />} />
-          <Route path='/members/:id' element={<MemberDetail/>}/>
-          <Route path='/members/add' element={<AddMembership/>}/>
+          <Route path="/members/:id" element={<MemberDetail />} />
+          <Route path="/members/add" element={<AddMembership />} />
           <Route path="/dashboard/general-user" element={<GeneralUser />} />
         </Routes>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
-
+export default App

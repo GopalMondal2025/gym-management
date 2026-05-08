@@ -1,8 +1,8 @@
-import dotenv from "dotenv"
-import app from "./app.js"
-import connectDB from "./db/dbconnection.js"
+import dotenv from 'dotenv'
+import app from './app.js'
+import connectDB from './db/dbconnection.js'
 dotenv.config({
-  path: "./.env",
+  path: './.env',
 })
 
 const port = process.env.PORTNAME || 3000
@@ -14,6 +14,6 @@ connectDB()
     })
   })
   .catch(error => {
-    console.error("MongoDB connection error", error)
+    console.error('MongoDB connection error', error)
     process.exit(1)
   })

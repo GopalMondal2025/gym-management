@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react'
 
 const ForgotPassword = ({ switchToLogin }) => {
   return (
     <div className="w-full max-w-md p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl">
-
       {/* Lock Icon */}
       <div className="flex justify-center mb-4">
         <div className="w-12 h-12 rounded-full bg-amber-400/20 flex items-center justify-center">
@@ -21,16 +20,13 @@ const ForgotPassword = ({ switchToLogin }) => {
         </div>
       </div>
 
-      <h2 className="text-3xl font-bold text-white mb-2 text-center">
-        Forgot Password
-      </h2>
+      <h2 className="text-3xl font-bold text-white mb-2 text-center">Forgot Password</h2>
 
       <p className="text-gray-300 text-sm text-center mb-6">
         Enter your registered email and we'll send you a reset link.
       </p>
 
       <div className="flex flex-col gap-4">
-
         <input
           type="email"
           placeholder="Email Address"
@@ -43,18 +39,14 @@ const ForgotPassword = ({ switchToLogin }) => {
 
         {/* Switch */}
         <p className="text-gray-300 text-sm text-center mt-2">
-          Remember your password?{" "}
-          <span
-            onClick={switchToLogin}
-            className="text-amber-400 cursor-pointer hover:underline"
-          >
+          Remember your password?{' '}
+          <span onClick={switchToLogin} className="text-amber-400 cursor-pointer hover:underline">
             Login
           </span>
         </p>
-
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ForgotPassword;
+export default ForgotPassword

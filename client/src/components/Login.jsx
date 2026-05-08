@@ -1,20 +1,16 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 const Login = ({ switchToRegister, switchToForgotPassword }) => {
-  const navigate=useNavigate();
-  const handleLogin=()=>{
-    sessionStorage.setItem("isLogin", true);
+  const navigate = useNavigate()
+  const handleLogin = () => {
+    sessionStorage.setItem('isLogin', true)
     navigate('/dashboard')
   }
   return (
     <div className="w-full max-w-md p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl">
-
-      <h2 className="text-3xl font-bold text-white mb-7 text-center">
-        Welcome Back
-      </h2>
+      <h2 className="text-3xl font-bold text-white mb-7 text-center">Welcome Back</h2>
 
       <div className="flex flex-col gap-4">
-
         <input
           type="text"
           placeholder="Username"
@@ -33,7 +29,8 @@ const Login = ({ switchToRegister, switchToForgotPassword }) => {
           Forgot Password?
         </span>
 
-        <button className="mt-4 bg-amber-400 text-black font-semibold py-3 rounded-lg hover:bg-amber-300 transition duration-300"
+        <button
+          className="mt-4 bg-amber-400 text-black font-semibold py-3 rounded-lg hover:bg-amber-300 transition duration-300"
           onClick={() => handleLogin()}
         >
           Login
@@ -41,7 +38,7 @@ const Login = ({ switchToRegister, switchToForgotPassword }) => {
 
         {/* Switch */}
         <p className="text-gray-300 text-sm text-center mt-2">
-          Not registered?{" "}
+          Not registered?{' '}
           <span
             onClick={switchToRegister}
             className="text-amber-400 cursor-pointer hover:underline"
@@ -51,7 +48,7 @@ const Login = ({ switchToRegister, switchToForgotPassword }) => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

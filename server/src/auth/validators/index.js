@@ -1,69 +1,52 @@
-import { body } from "express-validator";
+import { body } from 'express-validator'
 
 const userRegisterValidator = () => {
   return [
-    body("email")
+    body('email')
       .trim()
       .notEmpty()
-      .withMessage("Email is required")
+      .withMessage('Email is required')
       .isEmail()
-      .withMessage("Invalid email address"),
-    body("username")
+      .withMessage('Invalid email address'),
+    body('username')
       .trim()
       .notEmpty()
-      .withMessage("Username is required")
+      .withMessage('Username is required')
       .isLowercase()
-      .withMessage("Username must be in lowercase")
+      .withMessage('Username must be in lowercase')
       .isLength({ min: 3 })
-      .withMessage("Username must be at least 3 characters long"),
-    body("password")
-      .trim()
-      .notEmpty()
-      .withMessage("Password is required"),
-    body("fullname")
-      .optional()
-      .trim()
+      .withMessage('Username must be at least 3 characters long'),
+    body('password').trim().notEmpty().withMessage('Password is required'),
+    body('fullname').optional().trim(),
   ]
 }
 
 const userLoginValidator = () => {
   return [
-    body("email")
-      .optional()
-      .trim()
-      .isEmail()
-      .withMessage("Email is Invalid"),
-    body("password")
-      .trim()
-      .notEmpty()
-      .withMessage("Password is required")
+    body('email').optional().trim().isEmail().withMessage('Email is Invalid'),
+    body('password').trim().notEmpty().withMessage('Password is required'),
   ]
 }
 
 const changePasswordValidator = () => {
   return [
-    body("oldPassword").notEmpty().withMessage("Old password is required"),
-    body("newPassword").notEmpty().withMessage("New password is required")
-
+    body('oldPassword').notEmpty().withMessage('Old password is required'),
+    body('newPassword').notEmpty().withMessage('New password is required'),
   ]
 }
 
 const userForgotPasswordValidator = () => {
   return [
-    body("email")
+    body('email')
       .notEmpty()
-      .withMessage("Email is required")
+      .withMessage('Email is required')
       .isEmail()
-      .withMessage("Email is invalid")
+      .withMessage('Email is invalid'),
   ]
 }
 
 const userResetForgotPasswordValidator = () => {
-  return [
-    body("newPassword")
-      .notEmpty()
-      .withMessage("Password is required")
-  ]
+  return [body('newPassword').notEmpty().withMessage('Password is required')]
 }
 
 export {
@@ -71,5 +54,5 @@ export {
   userLoginValidator,
   changePasswordValidator,
   userForgotPasswordValidator,
-  userResetForgotPasswordValidator
+  userResetForgotPasswordValidator,
 }

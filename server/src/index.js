@@ -5,13 +5,13 @@ import connectDB from './config/db/db.mongo.js'
 dotenv.config({
   path: './.env',
 })
-const port = process.env.PORT 
+const port = process.env.PORT
 
 connectDB()
   .then(
     app.listen(port, () => {
       console.log(`Server is running at ${port}`)
-    })
+    }),
   )
   .catch(error => {
     console.error('Mongodb connection error', error)

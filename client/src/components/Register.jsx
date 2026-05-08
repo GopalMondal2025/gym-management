@@ -1,15 +1,11 @@
-import React from "react";
+import React from 'react'
 
 const Register = ({ switchToLogin }) => {
   return (
     <div className="w-full max-w-md p-8 rounded-2xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-2xl">
-      
-      <h2 className="text-3xl font-bold text-white mb-6 text-center">
-        Register Your Gym
-      </h2>
+      <h2 className="text-3xl font-bold text-white mb-6 text-center">Register Your Gym</h2>
 
       <div className="flex flex-col gap-4">
-        
         <input
           type="email"
           placeholder="Email Address"
@@ -46,17 +42,14 @@ const Register = ({ switchToLogin }) => {
 
         {/* Switch */}
         <p className="text-gray-300 text-sm text-center mt-2">
-          Already have an account?{" "}
-          <span
-            onClick={switchToLogin}
-            className="text-amber-400 cursor-pointer hover:underline"
-          >
+          Already have an account?{' '}
+          <span onClick={switchToLogin} className="text-amber-400 cursor-pointer hover:underline">
             Login
           </span>
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Register;
+export default Register
