@@ -4,7 +4,7 @@ import { apiResponse } from '../utils/api-response.js'
 import User from '../models/user.models.js'
 
 const getUserProfile = asyncHandler(async (req, res) => {
-  const profileId = req.user.profile_id
+  const profileId = req.params.profile_id
   const user = await User.findById(profileId)
   if (!user) {
     throw new apiError(400, 'User does not exists')
@@ -13,8 +13,10 @@ const getUserProfile = asyncHandler(async (req, res) => {
 })
 
 const listProfiles = asyncHandler(async (req, res) => {
-  const gymId = req.params.id
-  const profiles = await req.User.findOne(gymId)
+  const gymId = req.user._id
+  const profiles = await User.find({
+    gymId: gymId,
+  }).sort({ createdAt: -1 })
   if (!profiles) {
     throw new apiError(400, 'No profiles have been found')
   }
@@ -45,10 +47,11 @@ const updateProfile = asyncHandler(async (req, res) => {
   const updateFields = {}
   if (changedName !== undefined) {
     const nameExists = await User.findOne({
+      gym_id: req.user_id,
       name: changedName,
     })
     if (changedName === '' || nameExists) {
-      throw new apiError(400, 'Please provide a different User name')
+      throw new apiError(409, 'Please provide a different User name')
     }
     updateFields.name = changedName
   }
@@ -70,7 +73,7 @@ const updateProfile = asyncHandler(async (req, res) => {
       $set: updateFields,
     },
     {
-      new: true,
+      returnDocument: 'after',
     },
   )
   return res
@@ -81,7 +84,6 @@ const updateProfile = asyncHandler(async (req, res) => {
 })
 
 const createProfile = asyncHandler(async (req, res) => {
-  const gymId = req.params.id
   const {
     name,
     email,
@@ -95,17 +97,19 @@ const createProfile = asyncHandler(async (req, res) => {
     lastPaymentDate,
     nextBillingDate,
   } = req.body
+  const gymId = req.user._id
   if (!name) {
     throw new apiError(400, 'Name is required')
   }
   const nameExists = await User.findOne({
+    gymId: gymId,
     name: name,
   })
   if (nameExists) {
-    throw new apiError(400, 'User with this name already exists')
+    throw new apiError(409, 'User with this name already exists')
   }
   const newProfile = await User.create({
-    gymId,
+    gymId: gymId,
     name,
     email,
     phoneNumber,

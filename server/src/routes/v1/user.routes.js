@@ -1,9 +1,14 @@
 import e from 'express'
-import { getUserProfile, listProfiles, updateProfile } from '../../controllers/user.controller.js'
+import {
+  getUserProfile,
+  listProfiles,
+  updateProfile,
+  createProfile,
+  deleteProfile,
+} from '../../controllers/user.controller.js'
 const router = e.Router({ mergeParams: true })
 
-// router.get('/register', register)
-router.get('/profile', getUserProfile)
-router.get('/profiles', listProfiles)
-router.put('/profile/:profile_id', updateProfile)
+router.route('/').get(listProfiles).post(createProfile)
+router.route('/:profile_id').get(getUserProfile).patch(updateProfile).delete(deleteProfile)
+
 export default router
