@@ -64,17 +64,14 @@ const attendanceSchema = new Schema(
   },
 )
 
-
 attendanceSchema.index({
   gymId: 1,
   userId: 1,
 })
 
-
 attendanceSchema.index({
   date: -1,
 })
-
 
 attendanceSchema.index(
   {
